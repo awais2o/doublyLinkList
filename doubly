@@ -101,6 +101,7 @@ public:
 	}
 
 	void triplet(int sum) {
+	    int count=0;
 		node* itr1 = head;
 		node* itr2;
 		node* itr3 = head;
@@ -113,7 +114,9 @@ public:
 				while (itr3->next != nullptr)
 				{
 					if (itr1->data + itr2->data + itr3->data == sum) {
-						cout << itr1->data << ", " << itr2->data << ", " << itr3->data << endl;
+					count  ++;
+					cout<<endl<<"count"<<count;
+						cout <<endl<< itr1->data << ", " << itr2->data << ", " << itr3->data << endl;
 					}
 					itr3 = itr3->next;
 				}
