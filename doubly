@@ -80,7 +80,7 @@ public:
 
 				}
 
-			
+
 
 				itr = itr->next;
 
@@ -100,6 +100,29 @@ public:
 
 	}
 
+	void triplet(int sum) {
+		node* itr1 = head;
+		node* itr2;
+		node* itr3 = head;
+		while (itr1->next!=nullptr)
+		{
+			itr2 = itr1;
+			while (itr2->next != nullptr)
+			{
+				itr3 = itr2;
+				while (itr3->next != nullptr)
+				{
+					if (itr1->data + itr2->data + itr3->data == sum) {
+						cout << itr1->data << ", " << itr2->data << ", " << itr3->data << endl;
+					}
+					itr3 = itr3->next;
+				}
+				itr2 = itr2->next;
+			}
+			itr1 = itr1->next;
+		}
+
+	}
 	void printList()
 	{
 
@@ -141,7 +164,7 @@ main()
 	d.SortedInsert(3);
 
 	d.printList();
-
+	d.triplet(7);
 	system("pause");
 
 	return 0;
