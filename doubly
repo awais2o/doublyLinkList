@@ -1,0 +1,151 @@
+#include<iostream>
+using namespace std;
+
+class node
+{
+
+public:
+	int data;
+
+	node* next;
+
+	node* prev;
+
+};
+
+
+class Doubly
+{
+
+	node* head;
+
+public:
+	Doubly()
+	{
+
+		head = nullptr;
+
+	}
+	void SortedInsert(int n)
+	{
+
+		node* newnode = new node;
+
+		newnode->data = n;
+
+
+		if (head == nullptr)
+		{
+
+			newnode->next = nullptr;
+
+			newnode->prev = nullptr;
+
+			head = newnode;
+
+		}
+
+		else if (n < head->data)
+		{
+
+
+			newnode->next = head;
+
+			head = newnode;
+
+		}
+
+		else
+		{
+
+			node* itr = head;
+
+			while (itr->next != nullptr)
+
+			{
+
+				if (itr->data < n && itr->next->data > n)
+
+				{
+
+					newnode->next = itr->next;
+
+					newnode->prev = itr;
+
+					newnode->next->prev = itr->next;
+
+					itr->next = newnode;
+
+					break;
+
+				}
+
+			
+
+				itr = itr->next;
+
+			}
+			if (itr->next == nullptr)
+			{
+
+				itr->next = newnode;
+
+				newnode->prev = itr;
+
+
+
+			}
+
+		}
+
+	}
+
+	void printList()
+	{
+
+		node* temp = head;
+
+		while (temp != NULL)
+		{
+
+			cout << temp->data << " ";
+
+			temp = temp->next;
+
+		}
+
+	}
+
+};
+
+
+int
+main()
+{
+
+
+	Doubly d;
+
+	d.SortedInsert(5);
+
+	d.SortedInsert(4);
+
+	d.SortedInsert(7);
+
+	d.SortedInsert(1);
+
+	d.SortedInsert(2);
+
+	d.SortedInsert(6);
+
+	d.SortedInsert(3);
+
+	d.printList();
+
+	system("pause");
+
+	return 0;
+
+
+
+}
